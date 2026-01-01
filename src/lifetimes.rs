@@ -36,13 +36,13 @@ pub fn split_and_first<'a, 'b>(first: &'a str, second: &'b str) -> (&'a str, &'b
 /// The compiler can infer these lifetimes
 pub fn first_word(s: &str) -> &str {
     let bytes = s.as_bytes();
-    
+
     for (i, &item) in bytes.iter().enumerate() {
         if item == b' ' {
             return &s[0..i];
         }
     }
-    
+
     s
 }
 
@@ -54,19 +54,21 @@ pub fn get_static_str() -> &'static str {
 #[cfg(test)]
 mod tests {
     use super::*;
-    
+
     #[test]
     fn test_longest() {
         let s1 = "hello";
         let s2 = "world!";
         assert_eq!(longest(s1, s2), "world!");
     }
-    
+
     #[test]
     fn test_excerpt() {
         let novel = String::from("Call me Ishmael. Some years ago...");
         let first_sentence = novel.split('.').next().unwrap();
-        let excerpt = Excerpt { part: first_sentence };
+        let excerpt = Excerpt {
+            part: first_sentence,
+        };
         assert_eq!(excerpt.announce("Book"), "Book: Call me Ishmael");
     }
 }

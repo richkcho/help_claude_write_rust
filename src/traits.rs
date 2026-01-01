@@ -35,7 +35,7 @@ impl Drawable for Rectangle {
 /// Trait with default implementation
 pub trait Describable {
     fn name(&self) -> &str;
-    
+
     fn description(&self) -> String {
         format!("This is a {}", self.name())
     }
@@ -53,9 +53,9 @@ pub fn draw_twice<T: Drawable>(item: &T) -> String {
 }
 
 /// Multiple trait bounds
-pub fn draw_and_describe<T>(item: &T) -> String 
+pub fn draw_and_describe<T>(item: &T) -> String
 where
-    T: Drawable + Describable
+    T: Drawable + Describable,
 {
     format!("{}: {}", item.description(), item.draw())
 }
@@ -68,7 +68,7 @@ pub fn draw_all(items: &[Box<dyn Drawable>]) -> Vec<String> {
 /// Associated types in traits
 pub trait Container {
     type Item;
-    
+
     fn add(&mut self, item: Self::Item);
     fn get(&self, index: usize) -> Option<&Self::Item>;
 }
@@ -79,11 +79,11 @@ pub struct NumberContainer {
 
 impl Container for NumberContainer {
     type Item = i32;
-    
+
     fn add(&mut self, item: i32) {
         self.items.push(item);
     }
-    
+
     fn get(&self, index: usize) -> Option<&i32> {
         self.items.get(index)
     }
@@ -120,18 +120,21 @@ impl Serializable for Rectangle {}
 #[cfg(test)]
 mod tests {
     use super::*;
-    
+
     #[test]
     fn test_drawable() {
         let circle = Circle { radius: 5.0 };
         assert!(circle.draw().contains("Circle"));
     }
-    
+
     #[test]
     fn test_trait_objects() {
         let shapes: Vec<Box<dyn Drawable>> = vec![
             Box::new(Circle { radius: 5.0 }),
-            Box::new(Rectangle { width: 10.0, height: 20.0 }),
+            Box::new(Rectangle {
+                width: 10.0,
+                height: 20.0,
+            }),
         ];
         let drawings = draw_all(&shapes);
         assert_eq!(drawings.len(), 2);

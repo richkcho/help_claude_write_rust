@@ -2,8 +2,8 @@
 //!
 //! Shows various approaches to error handling that LLMs often struggle with
 
-use std::fmt;
 use std::error::Error;
+use std::fmt;
 use std::io;
 
 /// Custom error type implementation
@@ -45,9 +45,8 @@ pub fn parse_number(s: &str) -> Result<i32, ParseError> {
     if s.is_empty() {
         return Err(ParseError::InvalidFormat);
     }
-    
-    s.parse::<i32>()
-        .map_err(|_| ParseError::InvalidFormat)
+
+    s.parse::<i32>().map_err(|_| ParseError::InvalidFormat)
 }
 
 /// Chaining results with ? operator
@@ -96,14 +95,14 @@ pub fn handle_result(r: Result<i32, ParseError>) -> String {
 #[cfg(test)]
 mod tests {
     use super::*;
-    
+
     #[test]
     fn test_parse_number() {
         assert!(parse_number("42").is_ok());
         assert!(parse_number("").is_err());
         assert!(parse_number("abc").is_err());
     }
-    
+
     #[test]
     fn test_safe_divide() {
         assert_eq!(safe_divide(10, 2), Some(5));

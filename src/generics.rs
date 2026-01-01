@@ -49,7 +49,7 @@ impl<T, U> Pair<T, U> {
     pub fn new(first: T, second: U) -> Self {
         Pair { first, second }
     }
-    
+
     pub fn swap(self) -> Pair<U, T> {
         Pair {
             first: self.second,
@@ -77,7 +77,7 @@ impl<L, R> Either<L, R> {
     pub fn is_left(&self) -> bool {
         matches!(self, Either::Left(_))
     }
-    
+
     pub fn is_right(&self) -> bool {
         matches!(self, Either::Right(_))
     }
@@ -92,7 +92,7 @@ impl<T: Display> Wrapper<T> {
     pub fn new(value: T) -> Self {
         Wrapper { value }
     }
-    
+
     pub fn display(&self) -> String {
         format!("Wrapped: {}", self.value)
     }
@@ -138,20 +138,20 @@ impl<T: Default + Copy, const N: usize> FixedBuffer<T, N> {
 #[cfg(test)]
 mod tests {
     use super::*;
-    
+
     #[test]
     fn test_point() {
         let p = Point::new(3.0, 4.0);
         assert_eq!(p.distance_from_origin(), 5.0);
     }
-    
+
     #[test]
     fn test_pair() {
         let p = Pair::new("hello", 42);
         let swapped = p.swap();
         assert_eq!(swapped.first, 42);
     }
-    
+
     #[test]
     fn test_either() {
         let left: Either<i32, String> = Either::Left(42);

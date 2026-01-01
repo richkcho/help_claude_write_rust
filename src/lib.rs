@@ -7,9 +7,9 @@
 //! The goal is to provide reference implementations that help AI agents
 //! understand and generate better Rust code.
 
-pub mod lifetimes;
-pub mod error_handling;
-pub mod traits;
-pub mod generics;
 pub mod async_patterns;
 pub mod borrowing_patterns;
+pub mod error_handling;
+pub mod generics;
+pub mod lifetimes;
+pub mod traits;

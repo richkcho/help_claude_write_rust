@@ -46,9 +46,7 @@ pub struct SimpleProcessor {
 impl AsyncProcessor for SimpleProcessor {
     fn process(&self) -> Pin<Box<dyn Future<Output = String> + Send + '_>> {
         let name = self.name.clone();
-        Box::pin(async move {
-            format!("Processing: {}", name)
-        })
+        Box::pin(async move { format!("Processing: {}", name) })
     }
 }
 
@@ -66,7 +64,7 @@ pub fn async_closure_example() -> impl Future<Output = i32> {
 }
 
 /// Generic async function
-pub async fn generic_async<T>(value: T) -> T 
+pub async fn generic_async<T>(value: T) -> T
 where
     T: Send + 'static,
 {
@@ -88,7 +86,7 @@ impl AsyncCounter {
     pub fn new(max: u32) -> Self {
         AsyncCounter { count: 0, max }
     }
-    
+
     pub async fn next(&mut self) -> Option<u32> {
         if self.count < self.max {
             self.count += 1;
@@ -121,7 +119,7 @@ where
 mod tests {
     // Note: These tests would need an async runtime like tokio to actually run
     // They're shown here to demonstrate the pattern
-    
+
     #[test]
     fn test_async_counter() {
         // In real code, you'd use #[tokio::test] or similar
