@@ -1,0 +1,8 @@
+[package]
+name = "help_claude_write_rust"
+version = "0.1.0"
+edition = "2021"
+authors = ["richkcho"]
+description = "A collection of Rust code patterns that help LLM agents understand common challenges"
+
+[dependencies]
