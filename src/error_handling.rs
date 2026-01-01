@@ -57,7 +57,7 @@ pub fn process_numbers(input1: &str, input2: &str) -> Result<i32, ParseError> {
     Ok(num1 + num2)
 }
 
-/// Result with multiple error types using Box<dyn Error>
+/// Result with multiple error types using `Box<dyn Error>`
 pub fn flexible_error() -> Result<String, Box<dyn Error>> {
     let num = "42".parse::<i32>()?;
     Ok(format!("Parsed: {}", num))
