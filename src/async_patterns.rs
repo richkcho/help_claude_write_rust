@@ -45,8 +45,9 @@ pub struct SimpleProcessor {
 
 impl AsyncProcessor for SimpleProcessor {
     fn process(&self) -> Pin<Box<dyn Future<Output = String> + Send + '_>> {
+        let name = self.name.clone();
         Box::pin(async move {
-            format!("Processing: {}", self.name)
+            format!("Processing: {}", name)
         })
     }
 }

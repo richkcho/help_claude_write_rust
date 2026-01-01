@@ -51,9 +51,9 @@ pub fn parse_number(s: &str) -> Result<i32, ParseError> {
 }
 
 /// Chaining results with ? operator
-pub fn process_numbers(input: &str) -> Result<i32, ParseError> {
-    let num1 = parse_number(input)?;
-    let num2 = parse_number(input)?;
+pub fn process_numbers(input1: &str, input2: &str) -> Result<i32, ParseError> {
+    let num1 = parse_number(input1)?;
+    let num2 = parse_number(input2)?;
     Ok(num1 + num2)
 }
 
