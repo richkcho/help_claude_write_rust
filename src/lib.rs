@@ -12,3 +12,4 @@ pub mod error_handling;
 pub mod traits;
 pub mod generics;
 pub mod async_patterns;
+pub mod borrowing_patterns;

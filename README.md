@@ -52,6 +52,14 @@ Asynchronous programming patterns:
 - Async with lifetime parameters
 - Async iterators (stream-like patterns)
 
+### `borrowing_patterns`
+Advanced borrowing challenges and solutions:
+- Double mutable borrow from same vector (multiple solutions)
+- 2D matrix with multiple mutable borrows (same row, different rows)
+- Enum-indexed data structures with multiple mutable access
+- Safe `split_at_mut` patterns
+- Generic helper functions for getting multiple mutable references
+
 ## Usage
 
 This is a library crate intended as a reference. Build and test with:
